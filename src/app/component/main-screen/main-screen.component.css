@@ -1,0 +1,22 @@
+.empTable{
+    margin-left: auto;
+    margin-right: auto;
+}
+.EmpDataForm{
+    margin-top: 20px;
+    border-style: groove;
+}
+td{
+    text-align: left;
+}
+.d-none{
+    display: none;
+}
+button.btn {
+    /* height: max-content; */
+    padding: 2px;
+}
+
+.input-group{
+    margin-bottom: 10px;
+}

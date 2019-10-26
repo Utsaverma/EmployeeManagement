@@ -1,0 +1,21 @@
+.leftPanelContainer{
+    margin-top: 10px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 10px
+}
+
+.leftPanelContainer>span{
+    width: 60%;
+    margin-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: block;
+    margin-bottom: 20px;
+    background-color: grey;
+    border-radius: 5px;
+}
+.leftPanelContainer>span>a{
+    color: white;
+}

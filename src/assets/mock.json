@@ -1,0 +1,81 @@
+[{
+    "name": "Charlton Corrison",
+    "gender": "Male",
+    "empId": "195155",
+    "email": ["dummy1","dummy2"],
+    "dob": "6/26/2019",
+    "desig": "Legal Assistant",
+    "dept": "Business Development",
+    "address": ["dummy1","dummy2"],
+    "phone":["dummy1","dummy2"]
+  }, {
+    "name": "Chrisy Careswell",
+    "gender": "Male",
+    "empId": "362706",
+    "email": ["dummy1","dummy2"],
+    "dob": "3/11/2019",
+    "desig": "Product Engineer",
+    "dept": "Legal",
+    "address": ["dummy1","dummy2"],
+    "phone":["dummy1","dummy2"]
+  }, {
+    "name": "Karissa Giacovazzo",
+    "gender": "Female",
+    "empId": "300956",
+    "email": ["dummy1","dummy2"],
+    "dob": "2/4/2019",
+    "desig": "Programmer Analyst IV",
+    "dept": "Services",
+    "address":["dummy1","dummy2"],
+    "phone": ["dummy1","dummy2"]
+  }, {
+    "name": "Rayna Riddle",
+    "gender": "Female",
+    "empId": "703284",
+    "dob": "1/28/2019",
+    "desig": "Mechanical Systems Engineer",
+    "dept": "Accounting",
+    "address": ["dummy1","dummy2"],
+    "phone": ["dummy1","dummy2"]
+  }, {
+    "name": "Halimeda Pluvier",
+    "gender": "Female",
+    "empId": "618254",
+    "email": ["dummy1","dummy2"],
+    "dob": "1/19/2019",
+    "desig": "VP Product Management",
+    "dept": "Support",
+    "address": ["dummy1","dummy2"],
+    "phone":["dummy1","dummy2"]
+  }, {
+    "name": "Fey Candlish",
+    "gender": "Female",
+    "empId": "957948",
+    "email": ["dummy1","dummy2"],
+    "dob": "6/5/2019",
+    "desig": "Actuary",
+    "dept": "Research and Development",
+    "address": ["dummy1","dummy2"],
+    "phone":["dummy1","dummy2"]
+  }, {
+    "name": "Mariana Rucklesse",
+    "gender": "Female",
+    "empId": "543421",
+    "email":["dummy1","dummy2"],
+    "dob": "8/24/2019",
+    "desig": "Senior Quality Engineer",
+    "dept": "Services",
+    "address": ["dummy1","dummy2"],
+    "phone": ["dummy1","dummy2"]
+  }, {
+    "name": "Chandal Ordish",
+    "gender": "Female",
+    "empId": "260980",
+    "email": ["dummy1","dummy2"],
+    "dob": "3/14/2019",
+    "desig": "Environmental Tech",
+    "dept": "Services",
+    "address":["dummy1","dummy2"],
+    "phone":["dummy1","dummy2"]
+  }
+]
