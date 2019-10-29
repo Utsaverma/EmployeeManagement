@@ -7,7 +7,25 @@
     <table class="empTable">
       <tr>
         <td><label for="name"> Name</label></td>
-        <td><input id="name" [(ngModel)]="empData.name" type="text" name="name" placeholder="Enter Name" autofocus ngModel></td>
+        <td><input [(ngModel)]="empData.name" type="text" name="name" minlength="4" maxlength="30" placeholder="Enter Name" autofocus  required  #name="ngModel">
+        </td>
+        <td>
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger errorMsg">
+            <div class="commError" *ngIf="name.errors?.required">
+              Name is required.
+            </div>
+            <div class="commError" *ngIf="name.errors?.minlength">
+              Name must be at least 4 characters long.
+            </div>
+            <div class="commError" *ngIf="name.errors?.maxlength">
+              Name cannot be more than 15 characters.
+            </div>
+            <!--<div class="commError" *ngIf="name.errors.pattern"> 
+              Name can only consist Alphabets.
+           </div>--> 
+          </div>
+        
+        </td>
       </tr>
       <tr>
         <td><label for="dob"> Date of Birth</label></td>
@@ -51,7 +69,6 @@
       </tr>
       <tr [attr.id]="'parentContact'+i"*ngFor="let phone_no of phoneList;trackBy:index;let i = index;">
           <td><label [ngClass]="'contactLabel'+i"> Contact</label></td>
-          <!--<td><label [attr.for]="phone_no"> Phone No</label></td>-->
           <td><input [attr.id]="phone_no" (ngModel)="empData.phone_no" type="text" name="{{phone_no}}" placeholder="Enter Phone Number" ngModel></td>
           <!--<td><label [attr.for]="emailList[i]"> Email ID</label></td>-->
           <td><input [attr.id]="emailList[i]" (ngModel)="empData.emailList[i]" type="text" name="{{emailList[i]}}" placeholder="Enter Email ID" ngModel>
@@ -69,7 +86,7 @@
       </tr>
       <tr>
         <td>
-          <button class="btn btn-primary" type="submit">Submit</button>
+          <button class="btn btn-primary" [disabled]="!empData.valid" type="submit">Submit</button>
         </td>
         <td>
           <button class="btn btn-secondary" type="reset">Clear</button>

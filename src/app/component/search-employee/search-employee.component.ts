@@ -1,37 +1,50 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { SharedService } from './../../shared/shared.service';
 import { Subscription } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
-import * as $ from 'jquery';
-import 'datatables.net';
+import {EmployeeDetailsService} from "./../../shared/EmployeeDetails.service"
+declare var $;
 @Component({
   selector: 'app-search-employee',
   templateUrl: './search-employee.component.html',
   styleUrls: ['./search-employee.component.css']
 })
-export class SearchEmployeeComponent implements OnInit,OnDestroy {
+export class SearchEmployeeComponent implements OnInit {
   filteredData:any=[];
-  private _subscribe: Subscription;
+  //private _subscribe: Subscription;
   empData:any = [];
-  constructor(private sharedService:SharedService, private http: HttpClient) { }
-  ngOnInit() {
-    this.http.get('assets/mock.json').subscribe(data=>{
-      this.empData =data;
-    });
-    this.initDataTable();
+  @ViewChild('dataTable') table : ElementRef;
+  dataTable: any;
+  dtOptions: any;
+  constructor(private sharedService:SharedService, private http: HttpClient,private empDetailsServiceCall:EmployeeDetailsService) { }
+  ngOnInit(): void {
+    this.dtOptions={
+      "processing": true,
+      "pageLength": 10,
+      "pagingType": "full_numbers",
+      "lengthMenu": [[ 5, 10, 20, 50,-1 ],[ 5, 10, 20, 50,"All" ]]
+    };
+    // this.http.get('assets/mock.json').subscribe(data=>{
+    //   this.empData =data;
+    //   this.filteredData=[];
+    //   this.filteredData=this.empData;
+    // });
+    this.empData=[]
+    this.empDetailsServiceCall.allRecord.subscribe((data:{})=>{
+      this.empData=data;
+    })
     //;
     // this._subscribe=this.sharedService.allRecord.subscribe((data) => {
     //   this.empData=data;
     // });
-    
-  }
-  initDataTable(){
-    $('#example').DataTable();
-    
+    setTimeout(() => {
+      this.dataTable=$(this.table.nativeElement);
+      this.dataTable.dataTable(this.dtOptions);
+      //this.dataTable.dataTable();
+    },1000);
+      
   }
   searchForm(searchObj){
-    console.log(searchObj);
-    console.log(this.empData);
     this.filteredData=this.empData;
     if (searchObj.age & searchObj.gender) {
       console.log("Both Selected");

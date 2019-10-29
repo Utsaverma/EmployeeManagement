@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from './../../shared/shared.service';
-import * as $ from 'jquery';
+declare var $;
 @Component({
   selector: 'app-main-screen',
   templateUrl: './main-screen.component.html',
@@ -13,13 +13,15 @@ export class MainScreenComponent implements OnInit {
   phoneLen:number=0;
   addressLen:number=0;
   empData:any=[];
+  unamePattern;
   constructor(private sharedService:SharedService) { }
-  ngOnInit() {0
+  ngOnInit() {
     this.phoneLen=0;
     this.addressLen=0;
     this.phoneList.push("phone0");
     this.emailList.push("email0");
-    this.addressList.push("address0")
+    this.addressList.push("address0");
+    this.unamePattern= "/^[a-zA-Z]{,30}$/";
   }
   submitForm(empObj){
     var newObj:any={}
@@ -43,7 +45,7 @@ export class MainScreenComponent implements OnInit {
     });
     this.empData.push(newObj);
     this.sharedService.allRecord.emit(this.empData);
-    console.log(this.empData)
+    console.log(this.empData);
   }
   addMoreContact(){
     this.phoneLen=this.phoneLen+1;

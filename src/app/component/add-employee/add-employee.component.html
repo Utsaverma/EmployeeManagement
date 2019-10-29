@@ -1,0 +1,184 @@
+<div class="addEmpContainer">
+  <div class="empDataHeader">
+    <h5>Enter Employee Details</h5>
+  </div>
+  <form #myForm="ngForm" class="myForm" (ngSubmit)="register(myForm)" telephoneNumbers EmailIds Addresses novalidate>
+    <div class="row">
+      <div class="col col-lg-2">
+        <label>Name</label>
+      </div>
+      <div class="col-md-auto">
+        <input type="text" name="name" placeholder="Enter Name" #name="ngModel" autofocus ngModel empName required/>
+      </div>
+      <div class="col-md">
+        <show-errors [control]="name"></show-errors>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-lg-2">
+        <label>Date of Birth</label>
+      </div>
+      <div class="col-md-auto">
+        <input type="date" name="dob" placeholder="Enter DOB" #dob="ngModel" ngModel dob required/>
+      </div>
+      <div class="col-md">
+        <show-errors [control]="dob"></show-errors>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-lg-2">
+        <label>Gender</label>
+      </div>
+      <div class="col-md-auto">
+        <input type="radio" value="Male" #gender="ngModel" name="gender" ngModel required checked>
+        <span>Male</span>
+        <input type="radio" value="Female" #gender="ngModel" name="gender" ngModel required>
+        <span>Female</span>
+      </div>
+      <div class="col-md">
+        <show-errors [control]="gender"></show-errors>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-lg-2">
+        <label>Employee ID</label>
+      </div>
+      <div class="col-md-auto">
+        <input type="text" name="empID" #empID="ngModel" placeholder="Enter Emp ID" ngModel required empId/>
+       </div>
+       <div class="col-md">
+        <show-errors [control]="empID"></show-errors>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-lg-2">
+        <label> Designation</label>
+      </div>
+      <div class="col-md-auto">
+        <select name="desig" #desig="ngModel" ngModel required>
+          <option value="" disabled>--Select--</option>
+          <option value="SE">SE</option>
+          <option value="SSE">SSE</option>
+          <option value="TA">TA</option>
+          <option value="PM">PM</option>
+        </select>
+      </div>
+      <div class="col-md">
+        <show-errors [control]="desig"></show-errors>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-lg-2">
+        <label> Department</label>
+      </div>
+      <div class="col-md-auto">
+        <select name="dept" #dept="ngModel" ngModel required>
+          <option value="" disabled>--Select--</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Sales">Sales</option>
+          <option value="Purchase">Purchase</option>
+          <option value="RnD">RnD</option>
+        </select>
+      </div>
+      <div class="col-md">
+        <show-errors [control]="dept"></show-errors>
+      </div>
+    </div>
+    <div ngModelGroup="addresses">
+      <div *ngFor="let address of addresses; let i=index;" >
+        <div class="row">
+          <div class="col-lg-2">
+            <span *ngIf="addresses.length==1;else else_template">
+                <label>Address</label>
+            </span>
+            <ng-template #else_template><label>Address {{i + 1}}</label></ng-template>
+            <i (click)="removeAddress(i); myForm.control.markAsTouched()" [attr.id]="'removeIcon'+i" class="fas fa-minus-circle d-none"></i>
+            <i (click)="addAddress(i); myForm.control.markAsTouched()" [attr.id]="'addIcon'+i" class="fas fa-plus-circle"></i>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-lg-3">
+            <label>Street Address</label>
+          </div>
+          <div class="col-md-auto">
+            <input type="text" name="street[{{address}}]" #street="ngModel" placeholder="Enter Street Address"  ngModel required/>
+          </div>
+          <div class="col col-lg-3">
+            <label>City</label>
+          </div>
+          <div class="col-md-auto">
+            <input type="text" name="city[{{address}}]" #city="ngModel" placeholder="Enter City" ngModel required address/>
+           </div>
+          <show-errors [control]="city"></show-errors>
+        </div>
+        <div class="row">
+          <div class="col col-lg-3">
+            <label>State</label>
+          </div>
+          <div class="col-md-auto">
+            <input type="text" name="state[{{address}}]" #state="ngModel" placeholder="Enter State" ngModel required address/>
+            <show-errors [control]="state"></show-errors>
+          </div>
+          <div class="col col-lg-3">
+            <label>Country</label>
+          </div>
+          <div class="col-md-auto">
+            <input type="text" name="country[{{address}}]" #country="ngModel" placeholder="Enter Country" ngModel required address/>
+            <show-errors [control]="country"></show-errors>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-lg-3">
+            <label>Pin Code</label>
+          </div>
+          <div class="col-md-auto">
+            <input type="number" name="pin[{{address}}]" minlength="6" maxlength="6" #pin="ngModel" placeholder="Enter PIN Code" ngModel required pinCode/>
+          </div>
+          <div class="col-md">
+            <show-errors [control]="pin"></show-errors>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ngModelGroup="phoneNumbers" >
+      <div *ngFor="let phoneId of phoneNumberIds; let i=index;" class="row">
+        <div class="col col-lg-2">
+          <span *ngIf="phoneNumberIds.length==1;else else_template">
+              <label>Phone number</label>
+          </span>
+          <ng-template #else_template><label>Phone number {{i + 1}}</label></ng-template>
+        </div>
+        <div class="col-md-auto">
+          <input type="text" name="phoneNumber[{{phoneId}}]" #phoneNumber="ngModel" placeholder="Enter Phone Number" ngModel required telephoneNumber/>
+          <i (click)="remove(i); myForm.control.markAsTouched()" [attr.id]="'removePhoneIcon'+i" class="fas fa-minus-circle d-none"></i>
+          <i (click)="add(i); myForm.control.markAsTouched()" [attr.id]="'addPhoneIcon'+i" class="fas fa-plus-circle"></i>
+        </div>
+        <div class="col-md">
+          <show-errors [control]="phoneNumber"></show-errors>
+        </div>
+      </div>
+    </div> 
+    <div ngModelGroup="emailId">
+      <div *ngFor="let emailId of emailIDS; let i=index;" class="row">
+        <div class="col col-lg-2">
+          <span *ngIf="emailIDS.length==1;else else_template">
+              <label>Email ID</label>
+          </span>
+          <ng-template #else_template><label>Email ID {{i + 1}}</label></ng-template>
+        </div>
+        <div class="col-md-auto">
+          <input type="text" name="email[{{emailId}}]" #email="ngModel" placeholder="Enter Email ID" ngModel required EmailId/>
+          <i (click)="removeEmail(i); myForm.control.markAsTouched()" [attr.id]="'removeEmailIcon'+i" class="fas fa-minus-circle d-none"></i>
+          <i (click)="addEmail(i); myForm.control.markAsTouched()" [attr.id]="'addEmailIcon'+i" class="fas fa-plus-circle"></i>
+        </div>
+        <div class="col-md">
+          <show-errors [control]="email"></show-errors>
+        </div>
+      </div>
+    </div> 
+    <show-errors [control]="myForm"></show-errors>
+
+    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid || myForm.pending">Submit</button>
+    <button type="reset" class="btn btn-secondary">Clear</button>
+  </form>
+</div>

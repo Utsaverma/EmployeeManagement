@@ -28,11 +28,11 @@
     </form>
 
   </div>
-  <div class="showData"*ngIf="filteredData.length!=0">
+  <div class="showData" >
     <div class="searchMsg">
       <h5>Below are the details for the Searched Criteria:</h5>
     </div>
-    <table id="example" class="table table-responsive" border="1px solid #000000">
+    <table #dataTable class="display table" style="width:100%">
       <thead>
         <tr>
             <th>EmpID</th>
@@ -45,10 +45,9 @@
             <th>Phone</th>
             <th>Address</th>
         </tr>
-        
       </thead>
       <tbody>
-        <tr *ngFor="let empData of filteredData">
+        <tr *ngFor="let empData of filteredData;">
           <td>{{empData.empId}}</td> 
           <td>{{empData.name}}</td>
           <td>{{empData.gender}}</td>
@@ -73,7 +72,4 @@
         </tr>
       </tbody>
     </table>
-  </div>
-
-  
-  
+  <!--</div>-->

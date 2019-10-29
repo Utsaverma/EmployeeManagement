@@ -26,6 +26,7 @@
     "core-js": "^2.5.4",
     "datatables": "^1.10.18",
     "datatables.net": "^1.10.20",
+    "datatables.net-dt": "^1.10.20",
     "jquery": "^3.4.1",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
@@ -36,8 +37,10 @@
     "@angular/compiler-cli": "^6.1.0",
     "@angular/language-service": "^6.1.0",
     "@fortawesome/fontawesome-free": "^5.11.2",
+    "@types/datatables.net": "^1.10.18",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/jquery": "^3.3.31",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.3.0",
     "jasmine-core": "~2.99.1",

@@ -1,5 +1,5 @@
 .empTable{
-    margin-left: auto;
+    margin-left: 10%;
     margin-right: auto;
 }
 .EmpDataForm{
@@ -19,4 +19,13 @@ button.btn {
 
 .input-group{
     margin-bottom: 10px;
+}
+.errorMsg{
+    padding: 0;
+    margin-bottom: 0px;
+    display: inline-block;
+    margin-left: 20px;
+}
+.commError{
+    padding: 0 1.25rem;
 }

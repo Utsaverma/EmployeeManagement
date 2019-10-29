@@ -24,14 +24,14 @@ ul{
 li>span{
     margin-left: 5px;
 }
-.table thead th {
+/*.table thead th {
     border-right: 1px solid white;
     border-bottom: 1px solid #dee2e6;
 }
 .table>thead{
     background-color: black;
     color: white;
-}
+}*/
 .input-group>div>*{
     margin-right: 10px;
 }
