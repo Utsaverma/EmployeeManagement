@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { MainScreenComponent } from './component/main-screen/main-screen.component';
@@ -22,6 +23,7 @@ import { AddressFormat } from './validators/addressFormat.validator';
 import { EmployeeIDFormat } from './validators/employeeID.validator';
 import { DOBValidate } from './validators/dob.validator';
 import { EmpNameFormat } from './validators/empNameFormat.validator';
+import { SearchGitUserComponent } from './component/search-git-user/search-git-user.component';
 
 @NgModule({
   declarations: [
@@ -43,13 +45,15 @@ import { EmpNameFormat } from './validators/empNameFormat.validator';
     AddressFormat,
     EmployeeIDFormat,
     DOBValidate,
-    EmpNameFormat
+    EmpNameFormat,
+    SearchGitUserComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AutocompleteLibModule
   ],
   providers: [],
   bootstrap: [AppComponent]

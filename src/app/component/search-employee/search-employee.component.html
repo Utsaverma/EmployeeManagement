@@ -44,6 +44,7 @@
             <th>Department</th>
             <th>Phone</th>
             <th>Address</th>
+            <th>Age</th>
         </tr>
       </thead>
       <tbody>
@@ -69,6 +70,7 @@
               <li *ngFor="let phone of empData.phone;let i=index;">{{i+1}}.<span>{{phone}}</span></li>
             </ul>
           </td>
+          <td>{{empData.gender}}</td>
         </tr>
       </tbody>
     </table>

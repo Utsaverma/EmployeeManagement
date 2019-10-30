@@ -22,6 +22,7 @@
     "@angular/router": "^6.1.0",
     "@fortawesome/angular-fontawesome": "^0.5.0",
     "angular-font-awesome": "^3.1.2",
+    "angular-ng-autocomplete": "^1.1.14",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "datatables": "^1.10.18",

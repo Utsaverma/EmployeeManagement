@@ -56,6 +56,14 @@ export class AddEmployeeComponent implements OnInit {
   register (myForm: NgForm) {
     console.log('Employee Details Added Successfully');
     console.log(myForm.value);
+    const today= new Date();
+    const birthDate=new Date(myForm.value["dob"]);
+    let age=today.getFullYear()-birthDate.getFullYear();
+    const m= today.getMonth()-birthDate.getMonth();
+    if(m<0 ||(m==0 && today.getDate() <birthDate.getDate())){
+      age--;
+    }
+    myForm.value["age"]=age;
     this.allEmployeeDetails.push(myForm.value);
     this.empDetailsServiceCall.allRecord.emit(this.allEmployeeDetails);
   }
