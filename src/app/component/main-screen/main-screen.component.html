@@ -20,11 +20,7 @@
             <div class="commError" *ngIf="name.errors?.maxlength">
               Name cannot be more than 15 characters.
             </div>
-            <!--<div class="commError" *ngIf="name.errors.pattern"> 
-              Name can only consist Alphabets.
-           </div>--> 
           </div>
-        
         </td>
       </tr>
       <tr>
@@ -70,7 +66,6 @@
       <tr [attr.id]="'parentContact'+i"*ngFor="let phone_no of phoneList;trackBy:index;let i = index;">
           <td><label [ngClass]="'contactLabel'+i"> Contact</label></td>
           <td><input [attr.id]="phone_no" (ngModel)="empData.phone_no" type="text" name="{{phone_no}}" placeholder="Enter Phone Number" ngModel></td>
-          <!--<td><label [attr.for]="emailList[i]"> Email ID</label></td>-->
           <td><input [attr.id]="emailList[i]" (ngModel)="empData.emailList[i]" type="text" name="{{emailList[i]}}" placeholder="Enter Email ID" ngModel>
             <i (click)="addMoreContact()" [attr.id]="'addIcon'+i" class="fas fa-plus-circle"></i>
             <i (click)="removeContact($event)" [attr.id]="'removeIcon'+i" class="fas fa-minus-circle d-none"></i>
@@ -93,8 +88,6 @@
         </td>
       </tr>
     </table>
-    
-    
   </div>
 </form>
 

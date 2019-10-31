@@ -26,9 +26,11 @@ export class AddEmployeeComponent implements OnInit {
     this.empIdFlag=false;
     this.allEmployeeDetails=[];
   }
+  //removing Phone numbers
   remove(i:number) {
     this.phoneNumberIds.splice(i, 1);
   }
+  //adding phone numbers
   add(i:number) {
     this.phoneNumberIds.push(++this.countPhone);
     setTimeout(() => {
@@ -36,6 +38,7 @@ export class AddEmployeeComponent implements OnInit {
       $($("#removePhoneIcon"+i)[0]).removeClass("d-none");
     });
   }
+  //adding Email IDs
   addEmail(i:number) {
     this.emailIDS.push(++this.countEmail);
     setTimeout(() => {
@@ -43,9 +46,11 @@ export class AddEmployeeComponent implements OnInit {
       $($("#removeEmailIcon"+i)[0]).removeClass("d-none");
     });
   }
+  // removing Email IDs
   removeEmail(i:number) {
     this.emailIDS.splice(i, 1);
   }
+  // Adding Addresses
   addAddress(i:number) {
     this.addresses.push(++this.countAddress);
     setTimeout(() => {
@@ -53,19 +58,18 @@ export class AddEmployeeComponent implements OnInit {
       $($("#removeIcon"+i)[0]).removeClass("d-none");
     });
   }
+  //removing Addresses
   removeAddress(i:number) {
     this.addresses.splice(i, 1);
   }
   register (myForm: NgForm) {
     this.success="";
-    console.log('Employee Details Added Successfully');
-    console.log(myForm.value);
     let age:number;
     const bdate = new Date(myForm.value["dob"]);
     const timeDiff = Math.abs(Date.now() - bdate.getTime() );
     age= Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
     myForm.value["age"]=age;
-    //modifying addresses
+    //modifying addresses to generate a list
     let addObj:any;
     let addList=[];
     let FormAddresses=myForm.value["addresses"];
@@ -85,6 +89,7 @@ export class AddEmployeeComponent implements OnInit {
     }
     myForm.value["addList"]=addList;
     this.allEmployeeDetails.push(myForm.value);
+    //pushing data to common Data Source
     this.empDetailsServiceCall.setAllrecord(this.allEmployeeDetails);
     this.success="Employee Registered Successfully!!!"
     myForm.reset();
@@ -92,6 +97,7 @@ export class AddEmployeeComponent implements OnInit {
       this.success="";
     },3000);
   }
+  //Searching for Unique ID
   uniqueEmpId(empID){
     this.empIdFlag=false;
     for(let i=0;i<this.allEmployeeDetails.length;i++){

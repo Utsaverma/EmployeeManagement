@@ -11,6 +11,7 @@ export class LeftPanelComponent implements OnInit {
 
   ngOnInit() {
   }
+  //setting the background color for the selected Component
   setBgColo(event){
     $($(".active")[0]).removeClass("active");
     $(event.target.parentElement).addClass("active")

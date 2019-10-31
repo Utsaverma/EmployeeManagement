@@ -48,15 +48,12 @@ export class SearchEmployeeComponent implements OnInit {
       console.log("Nothing Selected");
       this.filteredData=[];
       this.flag=true;
-      
     }
-    console.log(this.filteredData)
     if(this.filteredData.length!=0){
       this.errorMsg="";
       $("#searchDataTable").removeClass("d-none");
       setTimeout(() => {
         this.dataTable=$(this.table.nativeElement);
-        //this.dataTable.removeAttr('width').dataTable(this.dtOptions);
         this.dataTable.dataTable(this.dtOptions);
       },1000);
     }

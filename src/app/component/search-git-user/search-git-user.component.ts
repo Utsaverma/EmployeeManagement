@@ -28,12 +28,15 @@ export class SearchGitUserComponent implements OnInit {
       "retrieve": true
     };
     this.usersData=[];
+    //Api Call for getting the user from Git
     this.gitUserServiceCall.getUserDetails(0).subscribe((data:{})=>{
       this.usersData=data;
     });
     
   }
+  //key used for displaying the username
   keyword = 'login';
+  //when the item is selected this function will be invoked
   selectEvent(item) {
     this.selectedUsersDetails={};
     this.userFollower=0;
@@ -46,34 +49,37 @@ export class SearchGitUserComponent implements OnInit {
     $("#selectedUser").addClass("d-none");
     this.gitUserServiceCall.setUser(this.selectedUsersDetails.login);
     setTimeout(() => {
+      //Api call for getting the followers
       this.gitUserServiceCall.getFollowers().subscribe((data:{})=>{
         this.follower=data;
         this.userFollower=this.follower.length;
       });
+      //Api call for getting the Following
       this.gitUserServiceCall.getFollows().subscribe((data:{})=>{
         this.follows=data;
         this.userFollows=this.follows.length;
       });
+      //Api call for getting the Repo Details
       this.gitUserServiceCall.getRepoData().subscribe((data:{})=>{
         this.selectedRepo=data;
       });
       
     });
   }
- 
+ //when Search Parameter changes this function is invoked
   onChangeSearch(val: string) {
     $("#selectedUser").addClass("d-none");
   }
-  
+  // to show the repodetails
   showRepos(){
     this.showRepoDetails=true;
     $("#selectedUser").removeClass("d-none");
     setTimeout(() => {
+      //Initializing DataTables
       this.dataTable=$(this.table.nativeElement);
       this.dataTable.dataTable(this.dtOptions);
       $(".dataTables_wrapper").css("margin-top","20px");
     });
-    
   }
 }
 
