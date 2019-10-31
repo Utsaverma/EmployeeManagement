@@ -13,7 +13,7 @@ export class AddressFormat implements Validator {
    const isValid = /^(?![\s.]+$)[a-zA-Z\s.]*$/.test(c.value);
    const message = {
      'address': {
-       'message': 'City/State/Country name should be valid'
+       'message': 'City/State/Country can only contain Alphabets'
      }
    };
    return isValid ? null : message;

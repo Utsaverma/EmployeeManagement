@@ -30,10 +30,12 @@
         <label>Gender</label>
       </div>
       <div class="col-md-auto">
-        <input type="radio" value="Male" #gender="ngModel" name="gender" ngModel required checked>
+        <input type="radio" value="Male" #gender="ngModel" name="gender" ngModel required>
         <span>Male</span>
         <input type="radio" value="Female" #gender="ngModel" name="gender" ngModel required>
         <span>Female</span>
+        <input type="radio" value="Others" #gender="ngModel" name="gender" ngModel required>
+        <span>Others</span>
       </div>
       <div class="col-md">
         <show-errors [control]="gender"></show-errors>
@@ -44,9 +46,10 @@
         <label>Employee ID</label>
       </div>
       <div class="col-md-auto">
-        <input type="text" name="empID" #empID="ngModel" placeholder="Enter Emp ID" ngModel required empId/>
+        <input type="text" name="empID" #empID="ngModel" (keyup)="uniqueEmpId($event.target.value)" placeholder="Enter Emp ID" ngModel required empId/>
        </div>
        <div class="col-md">
+        <span *ngIf="empIdFlag" class="uniqueError">Employee ID should be Unique</span>
         <show-errors [control]="empID"></show-errors>
       </div>
     </div>
@@ -57,10 +60,10 @@
       <div class="col-md-auto">
         <select name="desig" #desig="ngModel" ngModel required>
           <option value="" disabled>--Select--</option>
-          <option value="SE">SE</option>
-          <option value="SSE">SSE</option>
-          <option value="TA">TA</option>
-          <option value="PM">PM</option>
+          <option value="Developer">Developer</option>
+          <option value="Associate">Associate</option>
+          <option value="Contracter">Contracter</option>
+          <option value="Manager">Manager</option>
         </select>
       </div>
       <div class="col-md">
@@ -97,44 +100,63 @@
           </div>
         </div>
         <div class="row">
-          <div class="col col-lg-3">
+          <div class="col"></div>
+          <div class="col">
             <label>Street Address</label>
           </div>
-          <div class="col-md-auto">
+          <div class="col">
             <input type="text" name="street[{{address}}]" #street="ngModel" placeholder="Enter Street Address"  ngModel required/>
           </div>
-          <div class="col col-lg-3">
+          <div class="col">
             <label>City</label>
           </div>
-          <div class="col-md-auto">
+          <div class="col">
             <input type="text" name="city[{{address}}]" #city="ngModel" placeholder="Enter City" ngModel required address/>
-           </div>
-          <show-errors [control]="city"></show-errors>
+          </div>
         </div>
         <div class="row">
-          <div class="col col-lg-3">
+          <div class="col"></div>
+          <div class="col">
+              <show-errors [control]="city"></show-errors>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col">
             <label>State</label>
           </div>
-          <div class="col-md-auto">
+          <div class="col">
             <input type="text" name="state[{{address}}]" #state="ngModel" placeholder="Enter State" ngModel required address/>
-            <show-errors [control]="state"></show-errors>
-          </div>
-          <div class="col col-lg-3">
+           </div>
+          <div class="col">
             <label>Country</label>
           </div>
-          <div class="col-md-auto">
+          <div class="col">
             <input type="text" name="country[{{address}}]" #country="ngModel" placeholder="Enter Country" ngModel required address/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <show-errors [control]="state"></show-errors>
+          </div>
+          <div class="col">
             <show-errors [control]="country"></show-errors>
           </div>
         </div>
         <div class="row">
-          <div class="col col-lg-3">
+          <div class="col"></div>
+          <div class="col pinCode">
             <label>Pin Code</label>
           </div>
-          <div class="col-md-auto">
+          <div class="col pinCode">
             <input type="number" name="pin[{{address}}]" minlength="6" maxlength="6" #pin="ngModel" placeholder="Enter PIN Code" ngModel required pinCode/>
           </div>
-          <div class="col-md">
+          <div class="col"></div>
+          <div class="col"></div>
+        </div>
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-8">
             <show-errors [control]="pin"></show-errors>
           </div>
         </div>
@@ -167,7 +189,7 @@
           <ng-template #else_template><label>Email ID {{i + 1}}</label></ng-template>
         </div>
         <div class="col-md-auto">
-          <input type="text" name="email[{{emailId}}]" #email="ngModel" placeholder="Enter Email ID" ngModel required EmailId/>
+          <input type="text" name="email[{{emailId}}]" #email="ngModel" placeholder="Enter Email ID" ngModel required EmaiId/>
           <i (click)="removeEmail(i); myForm.control.markAsTouched()" [attr.id]="'removeEmailIcon'+i" class="fas fa-minus-circle d-none"></i>
           <i (click)="addEmail(i); myForm.control.markAsTouched()" [attr.id]="'addEmailIcon'+i" class="fas fa-plus-circle"></i>
         </div>
@@ -177,8 +199,12 @@
       </div>
     </div> 
     <show-errors [control]="myForm"></show-errors>
-
-    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid || myForm.pending">Submit</button>
-    <button type="reset" class="btn btn-secondary">Clear</button>
+    <div class="empBtn">
+      <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid || myForm.pending || empIdFlag">Submit</button>
+      <button type="reset" class="btn btn-secondary">Clear</button>
+    </div>
+    <div class="row">
+      <div class="col successMsg">{{success}}</div>
+    </div>
   </form>
 </div>

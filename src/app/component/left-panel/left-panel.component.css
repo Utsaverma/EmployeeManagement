@@ -16,6 +16,12 @@
     background-color: grey;
     border-radius: 5px;
 }
+.leftPanelContainer>span.active{
+    background-color: #007bff;
+}
 .leftPanelContainer>span>a{
     color: white;
+}
+.leftPanelContainer>span>a:hover{
+    text-decoration: unset;
 }

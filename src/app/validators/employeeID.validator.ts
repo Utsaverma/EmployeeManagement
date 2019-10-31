@@ -13,7 +13,7 @@ export class EmployeeIDFormat implements Validator {
    const isValidEmpID = /^[a-zA-Z0-9_]+$/.test(c.value);
    const message = {
      'empId': {
-       'message': 'Employee ID must be valid (AlphaNumeric)'
+       'message': 'Employee ID can only contain Alphabets,Digits and Underscore'
      }
    };
    return isValidEmpID ? null : message;

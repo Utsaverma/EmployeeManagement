@@ -1,6 +1,7 @@
 .addEmpContainer{
     margin-top: 10px;
     border: groove;
+    margin-right: 10px
 }
 .d-none{
     display: none;
@@ -18,4 +19,32 @@ button.btn {
 }
 .btn-secondary{
     margin-left: 10px;
+}
+.empBtn{
+    text-align: center;
+}
+.successMsg{
+    text-align: center;
+    margin-top: 10px;
+}
+input[type=radio] {
+    margin-left: 5px;
+}
+input, select{
+    border-radius: 5px;
+}
+.pinCode{
+    padding-left: 0.5%;
+}
+.uniqueError{
+    color: #721724;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    background-color: #f5b5c6;
+    padding: 0 1.25rem;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-radius: 5px;
+    margin-left: 6%;
 }

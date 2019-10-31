@@ -18,8 +18,11 @@ button.btn {
     margin-left: 20px;
 }
 ul{
-    list-style-type: none;
+    list-style-type: decimal;
     padding-left: 0px;
+}
+ul.subAdd{
+    list-style-type: none;
 }
 li>span{
     margin-left: 5px;
@@ -41,10 +44,23 @@ li>span{
 .searchContainer {
     border-style: groove;
     margin-top: 10px;
+    margin-right: 10px
 }
 .searchButtons{
     margin-bottom: 10px;
 }
 .searchMsg{
     text-align: left;
+}
+/* table.datTable{
+    width: 100%;
+    table-layout: fixed;
+    word-break: break-word;
+    word-wrap: break-word;
+} */
+.errMsg{
+    font-size: 16px;
+    font-weight: 700;
+    color: red;
+    margin-top: 20px;
 }

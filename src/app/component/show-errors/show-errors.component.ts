@@ -25,6 +25,7 @@ export class ShowErrorsComponent {
    'address':(params)=> params.message,
    'empId':(params)=> params.message,
    'empName':(params)=> params.message,
+   'uniqueEmpID':(params)=> params.message,
  };
 
  @Input()

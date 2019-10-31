@@ -3,58 +3,56 @@
     <div class="empDataHeader">
       <h5>Search For Employee</h5>
     </div>
-      <div class="input-group row">
-        <div class="col">
-          <label for="age"> Age</label>
-          <input id="age" [(ngModel)]="searchEmp.age" type="text" name="age" placeholder="Enter Age" autofocus ngModel>
-        </div>
-        <div class="col"> 
-            <label for="gender"> Gender</label>
-            <span id="gender">
-              <input type="radio" name="gender" value="male"  ngModel checked>Male
-              <input type="radio" name="gender" value="female" ngModel>Female
-              <input type="radio" name="gender" value="others" ngModel>others
-            </span>
-        </div>
-        
-            
+    <div class="input-group row">
+      <div class="col">
+        <label for="age"> Age</label>
+        <input id="age" [(ngModel)]="searchEmp.age" type="number" name="age" placeholder="Enter Age" autofocus ngModel>
       </div>
-      <div class="row searchButtons" >
-        <div class="col">
-          <button class="btn btn-primary" type="submit">Submit</button>
-          <button class="btn btn-secondary" (click)="clearFilterData()" type="reset">Clear</button>
-        </div>
-      </div>
-    </form>
-
-  </div>
-  <div class="showData" >
-    <div class="searchMsg">
-      <h5>Below are the details for the Searched Criteria:</h5>
+      <div class="col"> 
+          <label for="gender"> Gender</label>
+          <span id="gender">
+            <input type="radio" name="gender" value="Male"  ngModel>Male
+            <input type="radio" name="gender" value="Female" ngModel>Female
+            <input type="radio" name="gender" value="Others" ngModel>others
+          </span>
+      </div>    
     </div>
-    <table #dataTable class="display table" style="width:100%">
+    <div class="row searchButtons" >
+      <div class="col">
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-secondary" type="reset" (click)="clearFilterData()">Clear</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div id="searchDataTable" class="showData d-none" >
+  <div class="searchMsg">
+    <h5>Below are the details for the Searched Criteria:</h5>
+  </div>
+    <table #dataTable class="display table-responsive" style="width:100%">
       <thead>
         <tr>
-            <th>EmpID</th>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Email</th>
-            <th>Date of Birth</th>
-            <th>Designation</th>
-            <th>Department</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>Age</th>
+          <th>EmpID</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Email</th>
+          <th>DateOfBirth</th>
+          <th>Designation</th>
+          <th>Department</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Age</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let empData of filteredData;">
-          <td>{{empData.empId}}</td> 
+          <td>{{empData.empID}}</td> 
           <td>{{empData.name}}</td>
           <td>{{empData.gender}}</td>
           <td>
             <ul>
-              <li *ngFor="let email of empData.email;let i=index;">{{i+1}}.<span>{{email}}</span></li>
+              <li *ngFor="let email of empData.emailId | keyvalue;let i=index;">
+                <span>{{email.value}}</span></li>
             </ul>
           </td>
           <td>{{empData.dob}}</td>
@@ -62,16 +60,33 @@
           <td>{{empData.dept}}</td>
           <td>
             <ul>
-              <li *ngFor="let address of empData.address;let i=index;">{{i+1}}.<span>{{address}}</span></li>
+              <li *ngFor="let phone of empData.phoneNumbers| keyvalue;let i=index;"><span>{{phone.value}}</span></li>
             </ul>
           </td>
           <td>
             <ul>
-              <li *ngFor="let phone of empData.phone;let i=index;">{{i+1}}.<span>{{phone}}</span></li>
-            </ul>
+              <li *ngFor="let address of empData.addList;let i=index;">
+                <span>
+                    <ul class="subAdd">
+                      <li>
+                          {{address.street}},{{address.city}}
+                      </li>
+                      <li>
+                          {{address.state}},{{address.country}}
+                      </li>
+                      <li>
+                          {{address.pin}}
+                      </li>
+                    </ul>
+                </span>
+              </li>
+            </ul> 
           </td>
-          <td>{{empData.gender}}</td>
+          <td>{{empData.age}}</td>
         </tr>
       </tbody>
     </table>
-  <!--</div>-->
+ </div>
+ <div *ngIf="errorMsg" class="errMsg">
+   {{errorMsg}}
+ </div>

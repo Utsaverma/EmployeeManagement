@@ -11,14 +11,11 @@ export class DOBValidate implements Validator {
 
  validate(c: FormControl): ValidationErrors {
    let isValiddob = false;
-   const today= new Date();
-   const birthDate=new Date(c.value);
-   let age=today.getFullYear()-birthDate.getFullYear();
-   const m= today.getMonth()-birthDate.getMonth();
-   if(m<0 ||(m==0 && today.getDate() <birthDate.getDate())){
-     age--;
-   }
-   if(age>18){
+   let age:number;
+   const bdate = new Date(c.value);
+   const timeDiff = Math.abs(Date.now() - bdate.getTime() );
+   age= Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
+   if(age>=18){
     isValiddob=true;
    }
    const message = {

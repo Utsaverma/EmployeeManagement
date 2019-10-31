@@ -1,0 +1,12 @@
+.error{
+    color: #721724;
+    width: max-content;
+    background-color: #f5b5c6;
+    padding: 0 1.25rem;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-radius: 5px;
+}
+li{
+    list-style-type: none;
+}

@@ -10,7 +10,7 @@ import { NG_VALIDATORS, Validator, FormControl, ValidationErrors } from '@angula
 export class EmailFormat implements Validator {
 
  validate(c: FormControl): ValidationErrors {
-   const isValidEmailId = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(c.value);
+   const isValidEmailId = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(c.value);
    const message = {
      'EmaiId': {
        'message': 'Email ID must be valid'

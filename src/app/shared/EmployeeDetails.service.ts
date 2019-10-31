@@ -1,7 +1,12 @@
-import {Injectable, EventEmitter} from '@angular/core';
+import {Injectable} from '@angular/core';
 
-// @Injectable makes to available services in root level.
 @Injectable({providedIn:'root'})
 export class EmployeeDetailsService {
-  public allRecord = new EventEmitter<any>();
+  public allRecord= new Array();
+  getAllrecord(){
+    return this.allRecord;
+  }
+  setAllrecord(records){
+    this.allRecord=records;
+  }
 }

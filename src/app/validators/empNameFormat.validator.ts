@@ -13,7 +13,7 @@ export class EmpNameFormat implements Validator {
    const isValid = /^(?![\s.]+$)[a-zA-Z\s.]*$/.test(c.value);
    const message = {
      'empName': {
-       'message': 'Employee Name should be valid'
+       'message': 'Employee Name can only contain Alphabets'
      }
    };
    return isValid ? null : message;
