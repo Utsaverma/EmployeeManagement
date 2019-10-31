@@ -1,0 +1,21 @@
+.addEmpContainer{
+    margin-top: 10px;
+    border: groove;
+}
+.d-none{
+    display: none;
+}
+.fas{
+    margin-left: 10px;
+}
+.myForm{
+    margin-bottom: 10px;
+    text-align: left;
+    margin-left: 5%;
+}
+button.btn {
+    padding: 2px 6px;
+}
+.btn-secondary{
+    margin-left: 10px;
+}

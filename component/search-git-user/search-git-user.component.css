@@ -1,0 +1,24 @@
+.ng-autocomplete{
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+span.link {
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+}
+label{
+    margin-top: .5rem;
+}
+.selectedUser{
+    background-color: #666666;
+    color: white;
+}
+.defaultContent{
+    margin-right: 5%;
+    font-weight: 600;
+}

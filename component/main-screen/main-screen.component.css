@@ -1,0 +1,31 @@
+.empTable{
+    margin-left: 10%;
+    margin-right: auto;
+}
+.EmpDataForm{
+    margin-top: 20px;
+    border-style: groove;
+}
+td{
+    text-align: left;
+}
+.d-none{
+    display: none;
+}
+button.btn {
+    /* height: max-content; */
+    padding: 2px;
+}
+
+.input-group{
+    margin-bottom: 10px;
+}
+.errorMsg{
+    padding: 0;
+    margin-bottom: 0px;
+    display: inline-block;
+    margin-left: 20px;
+}
+.commError{
+    padding: 0 1.25rem;
+}
